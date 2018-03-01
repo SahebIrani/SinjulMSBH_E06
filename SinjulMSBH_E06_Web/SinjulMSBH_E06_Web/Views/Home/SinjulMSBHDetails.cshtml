@@ -1,0 +1,17 @@
+﻿@{
+      ViewData[ "Title" ] = "SinjulMSBHDetails";
+}
+
+<h2>SinjulMSBHDetails ..</h2>
+
+@{
+      var lstAlert =  (List<Alert>)TempData["_Alerts"];
+}
+
+@foreach ( var item in lstAlert )
+{
+      <div class="@item.Command alert-dismissible fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>@item.Command .. !!!!</strong> @item.Message
+      </div>
+}
