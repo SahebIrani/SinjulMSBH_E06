@@ -6,25 +6,25 @@ namespace SinjulMSBH_E06_Web.Controllers
 {
 	public class HomeController: Controller
 	{
-		[AcceptVerbs( "Get" , "Post" )]
-		public IActionResult SinjulMSBHDetails ( ) =>
-			 View( )
-				.WithSuccess( "SinjulMSBH WithSuccess .. !!!!" )
-				.WithError( "SinjulMSBH WithError .. !!!!" )
-				.WithInfo( "SinjulMSBH WithInfo .. !!!!" )
-				.WithWarning( "SinjulMSBH WithWarning .. !!!!" )
-				;
+		public IActionResult SinjulMSBHDetails ( ) => View( );
 
-		public IActionResult Index ( )
+		public IActionResult OpenUrlWithRedirectTempdataInOtherAction ( )
 		{
-			return View( );
+			return RedirectToAction( nameof( SinjulMSBHDetails ) )
+			.WithSuccess( "SinjulMSBH WithSuccess .. !!!!" , "SinjulMSBH Body WithSuccess Message .. !!!!" )
+			.WithDanger( "SinjulMSBH WithDanger .. !!!!" , "SinjulMSBH Body WithDanger Message .. !!!!" )
+			.WithInfo( "SinjulMSBH WithInfo .. !!!!" , "SinjulMSBH Body WithInfo Message .. !!!!" )
+			.WithWarning( "SinjulMSBH WithWarning .. !!!!" , "SinjulMSBH Body WithWarning Message .. !!!!" )
+			;
 		}
+
+		public IActionResult Index ( ) => View( );
 
 		public IActionResult About ( )
 		{
 			ViewData[ "Message" ] = "Your application description page.";
 
-			return View( );
+			return RedirectToAction( "Contact" );
 		}
 
 		public IActionResult Contact ( )

@@ -5,13 +5,23 @@
 <h2>SinjulMSBHDetails ..</h2>
 
 @{
-      var lstAlert =  (List<Alert>)TempData["_Alerts"];
+      var me = TempData["sinjulmsbhall"] as string;
+      var medes = TempData.GetAlert();
 }
-
-@foreach ( var item in lstAlert )
+@if ( medes.Count > 0 )
 {
-      <div class="@item.Command alert-dismissible fade in">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>@item.Command .. !!!!</strong> @item.Message
+      <br />
+      <div class="container">
+            @foreach ( var alert in medes )
+            {
+                  <div class="@alert.Type alert-dismissible fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>@alert.Title .. !!!!</strong> @alert.Body
+                  </div>
+            }
       </div>
+}
+else
+{
+      <h1 class="text-warning text-center">َAlert NotFound .. !!!!</h1>
 }
